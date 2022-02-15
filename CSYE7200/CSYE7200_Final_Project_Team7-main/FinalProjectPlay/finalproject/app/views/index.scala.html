@@ -1,0 +1,24 @@
+@(mainForm: Form[Main])(result: String)(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@import helper._
+
+@main("League of Legends Pridict") {
+<img src='@routes.Assets.versioned("images/lol-logo.png")' alt="League of Legend">
+<h1>Welcome to League of Legends Pridict!</h1>
+<h2> Predict</h2>
+<div class="container">
+    @form(helper.CSRF(routes.HomeController.postMsg)){
+    @inputText(mainForm("tmd"),'_label -> "Team Gold Diff")
+    @inputText(mainForm("tpd"),'_label -> "Top Gold Diff")
+    @inputText(mainForm("jnd"),'_label -> "Jungle Gold Diff")
+    @inputText(mainForm("mdd"),'_label -> "Mid Gold Diff")
+    @inputText(mainForm("acd"),'_label -> "ADC Gold Diff")
+    @inputText(mainForm("spd"),'_label -> "Support Gold Diff")
+    @inputText(mainForm("dg"),'_label -> "Dragon")
+    @inputText(mainForm("stu"),'_label -> "Structures")
+    @inputText(mainForm("kil"),'_label -> "Kills")
+    <input type="submit" value="Predict">
+    }
+</div>
+
+<h2 class="res"> @result </h2>
+}
